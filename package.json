@@ -1,0 +1,20 @@
+{
+    "name": "react-othello",
+    "author": {
+        "name": "mgi166",
+        "email": ""
+    },
+    "version": "0.0.1",
+    "description": "Sandbox for React",
+    "homepage": "",
+    "dependencies": {
+        "body-parser": "~1.10.0",
+        "express": "~4.10.6"
+    },
+    "license": "MIT",
+    "devDependencies": {},
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/reactjs/react-tutorial.git"
+    }
+}
