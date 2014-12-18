@@ -1,3 +1,16 @@
 #board {
-    background-color: #00ee00;
+    background-color: #7d3c1b;
+    boarder: 2em solid #000000;
+    padding: 1em 1em 1em 1em;
+    boarder-collapse: separate;
+    boarder-spacing: 2em;
+}
+
+.cell {
+    background-color: #639565;
+    position: relative;
+    width:   3em;
+    height:  3em;
+    padding:  1em 1em 1em 1em;
+    text-align:  center;
 }

@@ -1,8 +1,87 @@
 var Board = React.createClass({
   render: function() {
     return (
-      <table className="commentBox">
-        <tr></tr>
+      <table>
+        <tr>
+          <td className="cell"></td>
+          <td className="cell"></td>
+          <td className="cell"></td>
+          <td className="cell"></td>
+          <td className="cell"></td>
+          <td className="cell"></td>
+          <td className="cell"></td>
+          <td className="cell"></td>
+        </tr>
+        <tr>
+          <td className="cell"></td>
+          <td className="cell"></td>
+          <td className="cell"></td>
+          <td className="cell"></td>
+          <td className="cell"></td>
+          <td className="cell"></td>
+          <td className="cell"></td>
+          <td className="cell"></td>
+        </tr>
+        <tr>
+          <td className="cell"></td>
+          <td className="cell"></td>
+          <td className="cell"></td>
+          <td className="cell"></td>
+          <td className="cell"></td>
+          <td className="cell"></td>
+          <td className="cell"></td>
+          <td className="cell"></td>
+        </tr>
+        <tr>
+          <td className="cell"></td>
+          <td className="cell"></td>
+          <td className="cell"></td>
+          <td className="cell"></td>
+          <td className="cell"></td>
+          <td className="cell"></td>
+          <td className="cell"></td>
+          <td className="cell"></td>
+        </tr>
+        <tr>
+          <td className="cell"></td>
+          <td className="cell"></td>
+          <td className="cell"></td>
+          <td className="cell"></td>
+          <td className="cell"></td>
+          <td className="cell"></td>
+          <td className="cell"></td>
+          <td className="cell"></td>
+        </tr>
+        <tr>
+          <td className="cell"></td>
+          <td className="cell"></td>
+          <td className="cell"></td>
+          <td className="cell"></td>
+          <td className="cell"></td>
+          <td className="cell"></td>
+          <td className="cell"></td>
+          <td className="cell"></td>
+        </tr>
+        <tr>
+          <td className="cell"></td>
+          <td className="cell"></td>
+          <td className="cell"></td>
+          <td className="cell"></td>
+          <td className="cell"></td>
+          <td className="cell"></td>
+          <td className="cell"></td>
+          <td className="cell"></td>
+        </tr>
+        <tr>
+          <td className="cell"></td>
+          <td className="cell"></td>
+          <td className="cell"></td>
+          <td className="cell"></td>
+          <td className="cell"></td>
+          <td className="cell"></td>
+          <td className="cell"></td>
+          <td className="cell"></td>
+        </tr>
       </table>
     );
   }
