@@ -1,14 +1,14 @@
-var CommentBox = React.createClass({
+var Board = React.createClass({
   render: function() {
     return (
-      <div className="commentBox">
-        Hello, world! I am a CommentBox.
-      </div>
+      <table className="commentBox">
+        <tr></tr>
+      </table>
     );
   }
 });
 
 React.render(
-  <CommentBox />,
-  document.getElementById('content')
+  <Board />,
+  document.getElementById('board')
 );
