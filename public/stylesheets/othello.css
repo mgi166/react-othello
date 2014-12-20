@@ -14,3 +14,21 @@
     padding:  1em 1em 1em 1em;
     text-align:  center;
 }
+
+.cell > .white {
+    display: inline-block;
+    border-radius: 3em;
+    width: 3em;
+    height: 3em;
+
+    background: #ffffff;
+}
+
+.cell > .black {
+    display: inline-block;
+    border-radius: 3em;
+    width: 3em;
+    height: 3em;
+
+    background: #000000;
+}
