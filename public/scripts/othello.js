@@ -14,8 +14,11 @@ var Board = React.createClass({
 });
 
 var Cell = React.createClass({
+  putDisc: function() {
+    alert('aaaa');
+  },
   render: function() {
-    return (<td className="cell"></td>);
+    return (<td className="cell" onClick={this.putDisc}></td>);
   }
 });
 
