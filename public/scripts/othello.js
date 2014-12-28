@@ -16,6 +16,7 @@ var Board = React.createClass({
 var Cell = React.createClass({
   putDisc: function() {
     alert('aaaa');
+    $(".cell").append("<span class=white></span>");
   },
   render: function() {
     return (<td className="cell" onClick={this.putDisc}></td>);
