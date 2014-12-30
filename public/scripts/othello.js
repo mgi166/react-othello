@@ -30,14 +30,14 @@ var Board = React.createClass({
 });
 
 var Cell = React.createClass({
-  putDisc: function(e) {
+  setDisc: function(e) {
     var current = e.currentTarget;
     if (current.children.length < 1) {
       $(current).append('<span class="white"></span>');
     }
   },
   render: function() {
-    return (<td className="cell" onClick={this.putDisc}></td>);
+    return (<td className="cell" onClick={this.setDisc}></td>);
   }
 });
 
