@@ -19,7 +19,7 @@ var Board = React.createClass({
   render: function() {
     var board = this.state.board.map(function(row) {
       var rows = row.map(function(disc) {
-        return(<Cell />);
+        return(<Cell disc={disc}/>);
       });
 
       return(<tr>{rows}</tr>);
