@@ -32,14 +32,12 @@ var Board = React.createClass({
 var Cell = React.createClass({
   setDisc: function(e) {
     var current = e.currentTarget;
-    if (current.children.length < 1) {
-      $(current).append('<span class="white"></span>');
-    }
+    $(current).children().addClass(this.props.disc);
   },
   render: function() {
     return (
       <td className="cell" onClick={this.setDisc}>
-        <span className="empty"></span>
+        <span className={this.props.disc}></span>
       </td>
     );
   }
