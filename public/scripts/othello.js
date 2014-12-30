@@ -37,7 +37,11 @@ var Cell = React.createClass({
     }
   },
   render: function() {
-    return (<td className="cell" onClick={this.setDisc}></td>);
+    return (
+      <td className="cell" onClick={this.setDisc}>
+        <span className="empty"></span>
+      </td>
+    );
   }
 });
 
