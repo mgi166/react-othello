@@ -1,13 +1,23 @@
 var Board = React.createClass({
-  render: function() {
+  getInitialState: function() {
     var board = [];
-    for(var i = 1; i <= 8; i++) {
+    for (var i = 1; i <= 8; i++) {
       var row = [];
-      for(var j = 1; j <= 8; j++) {
-        row.push(<Cell />);
+      for (var j = 1; j <= 8; j++) {
+        row.push('empty');
       }
-      board.push(<tr>{row}</tr>);
+      board.push(row);
     }
+    return({board: board});
+  },
+  render: function() {
+    var board = this.state.board.map(function(row) {
+      var rows = row.map(function(disc) {
+        return(<Cell />);
+      });
+
+      return(<tr>{rows}</tr>);
+    });
 
     return (<table>{board}</table>);
   }
