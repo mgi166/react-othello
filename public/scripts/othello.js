@@ -14,26 +14,25 @@ var Board = React.createClass({
     board[3][4] = 'black';
     board[4][3] = 'black';
 
-    return({board: board, player: 'black'});
+    return({board: board, player: 'black', rival: 'white'});
   },
   player: function() {
-    if (this.enableToSet(this.state.player)) {
-      this.setState({player: 'black'});
+    if (this.enableToSet()) {
+      this.setState({player: 'black', rival:  'white'});
     } else {
-      this.setState({player: 'white'});
+      this.setState({player: 'white', rival:  'black'});
     }
 
     return(this.state.player);
   },
-  enableToSet: function(nowPlayer) {
+  enableToSet: function() {
     var board  = this.state.board;
-    var player = nowPlayer;
-    var rival  = this.rivalPlayer(player);
+    var rival  = this.state.rival;
     var res    = [];
 
     for (var x = 0; x < 8; x++) {
       for (var y = 0; y < 8; y++) {
-        if (player === board[x][y]) {
+        if (this.state.player === board[x][y]) {
           var rivalCells = [
             board[x - 1][y],
             board[x + 1][y],
@@ -62,10 +61,6 @@ var Board = React.createClass({
       }
     }
     return(false);
-  },
-  rivalPlayer: function(nowPlayer) {
-    var rival = ('black' === nowPlayer) ? 'white' : 'black';
-    return(rival);
   },
   render: function() {
     var player = this.player;
