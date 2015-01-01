@@ -56,8 +56,8 @@ var Board = React.createClass({
   },
   reverse: function(x, y) {
     this.start();
-    console.log(x);
-    console.log(y);
+    console.log(this.state.player);
+    console.log([x, y]);
   },
   start: function() {
     this.setPlayer();
