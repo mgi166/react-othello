@@ -59,6 +59,13 @@ var Board = React.createClass({
     console.log(this.state.player);
     console.log([x, y]);
   },
+  enableToReverse: function(x, y) {
+    if ('black' === this.state.board[x][y] || 'white' === this.state.board[x][y]) {
+      return(false);
+    } else {
+      // TODO
+    }
+  },
   start: function() {
     this.setPlayer();
   },
