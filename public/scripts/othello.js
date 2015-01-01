@@ -16,14 +16,15 @@ var Board = React.createClass({
 
     return({board: board, player: 'black', rival: 'white'});
   },
-  enableToSet: function() {
+  enableToSet: function(nowPlayer) {
     var board  = this.state.board;
     var rival  = this.state.rival;
+    var player = nowPlayer;
     var res    = [];
 
     for (var x = 0; x < 8; x++) {
       for (var y = 0; y < 8; y++) {
-        if (this.state.player === board[x][y]) {
+        if (player === board[x][y]) {
           var rivalCells = [
             board[x - 1][y],
             board[x + 1][y],
