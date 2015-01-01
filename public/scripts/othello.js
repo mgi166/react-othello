@@ -64,9 +64,13 @@ var Board = React.createClass({
   },
   setPlayer: function() {
     if (this.enableToSet(this.state.player)) {
-      this.setState({player: 'black', rival:  'white'});
+      if ('black' === this.state.player) {
+        this.setState({player: 'white', rival:  'black'});
+      } else {
+        this.setState({player: 'black', rival:  'white'});
+      }
     } else {
-      this.setState({player: 'white', rival:  'black'});
+      // TODO
     }
   },
   render: function() {
