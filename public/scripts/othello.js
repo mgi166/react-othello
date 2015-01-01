@@ -28,6 +28,10 @@ var Board = React.createClass({
   enableToSet: function(player) {
     return(true);
   },
+  rivalPlayer: function(nowPlayer) {
+    var rival = ('black' === nowPlayer) ? 'white' : 'black';
+    return(rival);
+  },
   render: function() {
     var player = this.player;
     var board  = this.state.board.map(function(row) {
