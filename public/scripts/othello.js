@@ -25,8 +25,43 @@ var Board = React.createClass({
 
     return(this.state.player);
   },
-  enableToSet: function(player) {
-    return(true);
+  enableToSet: function(nowPlayer) {
+    var board  = this.state.board;
+    var player = nowPlayer;
+    var rival  = this.rivalPlayer(player);
+    var res    = [];
+
+    for (var x = 0; x < 8; x++) {
+      for (var y = 0; y < 8; y++) {
+        if (player === board[x][y]) {
+          var rivalCells = [
+            board[x - 1][y],
+            board[x + 1][y],
+            board[x][y - 1],
+            board[x][y + 1],
+            board[x - 1][y - 1],
+            board[x - 1][y + 1],
+            board[x + 1][y - 1],
+            board[x + 1][y + 1]
+          ].filter(function(cell) {
+            return(rival === cell);
+          });
+
+          if (rivalCells.length > 0) {
+            res.push(true);
+          } else {
+            res.push(false);
+          }
+        }
+      }
+    }
+
+    for (var i = 0; i <= res.length; i++) {
+      if (res[i]) {
+        return(true);
+      }
+    }
+    return(false);
   },
   rivalPlayer: function(nowPlayer) {
     var rival = ('black' === nowPlayer) ? 'white' : 'black';
