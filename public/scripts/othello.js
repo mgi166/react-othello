@@ -64,7 +64,37 @@ var Board = React.createClass({
     if ('black' === this.state.board[x][y] || 'white' === this.state.board[x][y]) {
       return(false);
     } else {
-      // TODO
+      var player = this.state.player;
+      var rival  = this.state.rival;
+      var lines  = this.lines(x, y);
+
+      for (var i = 0; i < lines.length; i++) {
+        var line = this.lines(x, y)[i];
+
+        for (var j = 0; j < line.length; j++) {
+          var ele  = line[j];
+          var prev = line[j - 1];
+
+          if (ele === rival) {
+            continue;
+          }
+
+          if ('empty' === ele) {
+            break;
+          }
+
+          if (ele === player) {
+            if (prev === rival) {
+              return(true);
+            } else {
+              break;
+            }
+          }
+
+        }
+      }
+
+      return(false);
     }
   },
   lines: function(x, y) {
