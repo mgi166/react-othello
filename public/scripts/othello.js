@@ -63,8 +63,14 @@ var Board = React.createClass({
     return(false);
   },
   reverse: function(x, y) {
+    this.start();
     console.log(x);
     console.log(y);
+  },
+  start: function() {
+    this.setPlayer();
+  },
+  setPlayer: function() {
   },
   render: function() {
     var reverse = this.reverse;
