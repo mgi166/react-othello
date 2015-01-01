@@ -84,7 +84,11 @@ var Board = React.createClass({
   leftLine: function(x, y) {
     var line = [];
     for (var i = 1; i < 8; i++) {
-      var ele = this.state.board[x - i][y];
+      try {
+        var ele = this.state.board[x - i][y];
+      } catch(e) {
+        var ele = undefined;
+      }
 
       if (ele == null) {
         break;
@@ -97,7 +101,11 @@ var Board = React.createClass({
   leftUpperLine: function(x, y) {
     var line = [];
     for (var i = 1; i < 8; i++) {
-      var ele = this.state.board[x - i][y - i];
+      try {
+        var ele = this.state.board[x - i][y - i];
+      } catch(e) {
+        var ele = undefined;
+      }
 
       if (ele == null) {
         break;
@@ -110,7 +118,11 @@ var Board = React.createClass({
   upperLine: function(x, y) {
     var line = [];
     for (var i = 1; i < 8; i++) {
-      var ele = this.state.board[x][y - i];
+      try {
+        var ele = this.state.board[x][y - i];
+      } catch(e) {
+        var ele = undefined;
+      }
 
       if (ele == null) {
         break;
@@ -123,7 +135,11 @@ var Board = React.createClass({
   rightUpperLine: function(x, y) {
     var line = [];
     for (var i = 1; i < 8; i++) {
-      var ele = this.state.board[x + i][y - i];
+      try {
+        var ele = this.state.board[x + i][y - i];
+      } catch(e) {
+        var ele = undefined;
+      }
 
       if (ele == null) {
         break;
@@ -136,7 +152,11 @@ var Board = React.createClass({
   rightLine: function(x, y) {
     var line = [];
     for (var i = 1; i < 8; i++) {
-      var ele = this.state.board[x + i][y];
+      try {
+        var ele = this.state.board[x + i][y];
+      } catch(e) {
+        var ele = undefined;
+      }
 
       if (ele == null) {
         break;
@@ -149,7 +169,11 @@ var Board = React.createClass({
   rightLowerLine: function(x, y) {
     var line = [];
     for (var i = 1; i < 8; i++) {
-      var ele = this.state.board[x + i][y + i];
+      try {
+        var ele = this.state.board[x + i][y + i];
+      } catch(e) {
+        var ele = undefined;
+      }
 
       if (ele == null) {
         break;
@@ -162,7 +186,11 @@ var Board = React.createClass({
   lowerLine: function(x, y) {
     var line = [];
     for (var i = 1; i < 8; i++) {
-      var ele = this.state.board[x][y + i];
+      try {
+        var ele = this.state.board[x][y + i];
+      } catch(e) {
+        var ele = undefined;
+      }
 
       if (ele == null) {
         break;
@@ -175,7 +203,11 @@ var Board = React.createClass({
   leftLowerLine: function(x, y) {
     var line = [];
     for (var i = 1; i < 8; i++) {
-      var ele = this.state.board[x - i][y + i];
+      try {
+        var ele = this.state.board[x - i][y + i];
+      } catch(e) {
+        var ele = undefined;
+      }
 
       if (ele == null) {
         break;
