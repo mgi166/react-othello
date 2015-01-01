@@ -57,6 +57,7 @@ var Board = React.createClass({
   reverse: function(x, y) {
     this.start();
     console.log(this.state.player);
+    console.log(this.enableToReverse(x, y));
     console.log([x, y]);
   },
   enableToReverse: function(x, y) {
@@ -65,6 +66,124 @@ var Board = React.createClass({
     } else {
       // TODO
     }
+  },
+  lines: function(x, y) {
+    return (
+      [
+        this.leftLine(x, y),
+        this.leftUpperLine(x, y),
+        this.upperLine(x, y),
+        this.rightUpperLine(x, y),
+        this.rightLine(x, y),
+        this.rightLowerLine(x, y),
+        this.lowerLine(x, y),
+        this.leftLowerLine(x, y)
+      ]
+    );
+  },
+  leftLine: function(x, y) {
+    var line = [];
+    for (var i = 1; i < 8; i++) {
+      var ele = this.state.board[x - i][y];
+
+      if (ele == null) {
+        break;
+      } else {
+        line.push(ele);
+      }
+    }
+    return(line);
+  },
+  leftUpperLine: function(x, y) {
+    var line = [];
+    for (var i = 1; i < 8; i++) {
+      var ele = this.state.board[x - i][y - i];
+
+      if (ele == null) {
+        break;
+      } else {
+        line.push(ele);
+      }
+    }
+    return(line);
+  },
+  upperLine: function(x, y) {
+    var line = [];
+    for (var i = 1; i < 8; i++) {
+      var ele = this.state.board[x][y - i];
+
+      if (ele == null) {
+        break;
+      } else {
+        line.push(ele);
+      }
+    }
+    return(line);
+  },
+  rightUpperLine: function(x, y) {
+    var line = [];
+    for (var i = 1; i < 8; i++) {
+      var ele = this.state.board[x + i][y - i];
+
+      if (ele == null) {
+        break;
+      } else {
+        line.push(ele);
+      }
+    }
+    return(line);
+  },
+  rightLine: function(x, y) {
+    var line = [];
+    for (var i = 1; i < 8; i++) {
+      var ele = this.state.board[x + i][y];
+
+      if (ele == null) {
+        break;
+      } else {
+        line.push(ele);
+      }
+    }
+    return(line);
+  },
+  rightLowerLine: function(x, y) {
+    var line = [];
+    for (var i = 1; i < 8; i++) {
+      var ele = this.state.board[x + i][y + i];
+
+      if (ele == null) {
+        break;
+      } else {
+        line.push(ele);
+      }
+    }
+    return(line);
+  },
+  lowerLine: function(x, y) {
+    var line = [];
+    for (var i = 1; i < 8; i++) {
+      var ele = this.state.board[x][y + i];
+
+      if (ele == null) {
+        break;
+      } else {
+        line.push(ele);
+      }
+    }
+    return(line);
+  },
+  leftLowerLine: function(x, y) {
+    var line = [];
+    for (var i = 1; i < 8; i++) {
+      var ele = this.state.board[x - i][y + i];
+
+      if (ele == null) {
+        break;
+      } else {
+        line.push(ele);
+      }
+    }
+    return(line);
   },
   aroundTheCell: function(x, y) {
     return (
