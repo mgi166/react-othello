@@ -69,9 +69,9 @@ var Board = React.createClass({
   },
   render: function() {
     var player = this.player;
-    var board  = this.state.board.map(function(row) {
-      var rows = row.map(function(disc) {
-        return(<Cell disc={disc} player={player}/>);
+    var board  = this.state.board.map(function(row, y) {
+      var rows = row.map(function(disc, x) {
+        return(<Cell disc={disc} player={player} x={x} y={y}/>);
       });
 
       return(<tr>{rows}</tr>);
@@ -82,6 +82,12 @@ var Board = React.createClass({
 });
 
 var Cell = React.createClass({
+  getInitialState: function() {
+    return({
+      x: this.props.x,
+      y: this.props.y
+    });
+  },
   setDisc: function(e) {
     var current = e.currentTarget;
 
