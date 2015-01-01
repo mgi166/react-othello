@@ -17,7 +17,13 @@ var Board = React.createClass({
     return({board: board, player: 'black'});
   },
   player: function() {
-    return('black');
+    if (this.enableToSet(this.state.player)) {
+      this.setState({player: 'black'});
+    } else {
+      this.setState({player: 'white'});
+    }
+
+    return(this.state.player);
   },
   enableToSet: function(player) {
     return(true);
