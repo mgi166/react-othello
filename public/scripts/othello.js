@@ -16,8 +16,11 @@ var Board = React.createClass({
 
     return({board: board, player: 'black'});
   },
+  player: function() {
+    return('black');
+  },
   render: function() {
-    var player = this.state.player;
+    var player = this.player;
     var board  = this.state.board.map(function(row) {
       var rows = row.map(function(disc) {
         return(<Cell disc={disc} player={player}/>);
