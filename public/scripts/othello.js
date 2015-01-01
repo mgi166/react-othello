@@ -75,10 +75,12 @@ var Board = React.createClass({
           var ele  = line[j];
           var prev = line[j - 1];
 
+          // there is a possibility that can reverse
           if (ele === rival) {
             continue;
           }
 
+          // empty line can not be reverse
           if ('empty' === ele) {
             break;
           }
@@ -87,6 +89,7 @@ var Board = React.createClass({
             if (prev === rival) {
               return(true);
             } else {
+              // it is not possible to reverse own disc
               break;
             }
           }
