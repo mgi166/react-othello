@@ -16,15 +16,6 @@ var Board = React.createClass({
 
     return({board: board, player: 'black', rival: 'white'});
   },
-  player: function() {
-    if (this.enableToSet()) {
-      this.setState({player: 'black', rival:  'white'});
-    } else {
-      this.setState({player: 'white', rival:  'black'});
-    }
-
-    return(this.state.player);
-  },
   enableToSet: function() {
     var board  = this.state.board;
     var rival  = this.state.rival;
@@ -71,6 +62,11 @@ var Board = React.createClass({
     this.setPlayer();
   },
   setPlayer: function() {
+    if (this.enableToSet(this.state.player)) {
+      this.setState({player: 'black', rival:  'white'});
+    } else {
+      this.setState({player: 'white', rival:  'black'});
+    }
   },
   render: function() {
     var reverse = this.reverse;
