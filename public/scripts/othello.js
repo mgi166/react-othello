@@ -14,12 +14,13 @@ var Board = React.createClass({
     board[3][4] = 'black';
     board[4][3] = 'black';
 
-    return({board: board});
+    return({board: board, player: 'black'});
   },
   render: function() {
-    var board = this.state.board.map(function(row) {
+    var player = this.state.player;
+    var board  = this.state.board.map(function(row) {
       var rows = row.map(function(disc) {
-        return(<Cell disc={disc}/>);
+        return(<Cell disc={disc} player={player}/>);
       });
 
       return(<tr>{rows}</tr>);
@@ -32,7 +33,12 @@ var Board = React.createClass({
 var Cell = React.createClass({
   setDisc: function(e) {
     var current = e.currentTarget;
-    $(current).children().addClass(this.props.disc);
+
+    if (this.props.player == null) {
+      $(current).children().addClass(this.props.disc);
+    } else {
+      $(current).children().addClass(this.props.player);
+    }
   },
   render: function() {
     return (
