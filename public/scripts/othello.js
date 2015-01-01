@@ -66,6 +66,20 @@ var Board = React.createClass({
       // TODO
     }
   },
+  aroundTheCell: function(x, y) {
+    return (
+      [
+        this.state.board[x - 1][y],
+        this.state.board[x - 1][y - 1],
+        this.state.board[x - 1][y + 1],
+        this.state.board[x + 1][y],
+        this.state.board[x + 1][y - 1],
+        this.state.board[x + 1][y + 1],
+        this.state.board[x][y - 1],
+        this.state.board[x][y + 1],
+      ]
+    );
+  },
   start: function() {
     this.setPlayer();
   },
