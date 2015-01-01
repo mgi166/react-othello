@@ -19,6 +19,9 @@ var Board = React.createClass({
   player: function() {
     return('black');
   },
+  enableToSet: function(player) {
+    return(true);
+  },
   render: function() {
     var player = this.player;
     var board  = this.state.board.map(function(row) {
