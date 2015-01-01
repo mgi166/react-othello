@@ -62,11 +62,15 @@ var Board = React.createClass({
     }
     return(false);
   },
+  reverse: function(x, y) {
+    console.log(x);
+    console.log(y);
+  },
   render: function() {
-    var player = this.player;
+    var reverse = this.reverse;
     var board  = this.state.board.map(function(row, y) {
       var rows = row.map(function(disc, x) {
-        return(<Cell disc={disc} player={player} x={x} y={y}/>);
+        return(<Cell disc={disc} x={x} y={y} reverse={reverse}/>);
       });
 
       return(<tr>{rows}</tr>);
@@ -83,18 +87,12 @@ var Cell = React.createClass({
       y: this.props.y
     });
   },
-  setDisc: function(e) {
-    var current = e.currentTarget;
-
-    if (this.props.player == null) {
-      $(current).children().addClass(this.props.disc);
-    } else {
-      $(current).children().addClass(this.props.player);
-    }
+  onClick: function() {
+    this.props.reverse(this.state.x, this.state.y);
   },
   render: function() {
     return (
-      <td className="cell" onClick={this.setDisc}>
+      <td className="cell" onClick={this.onClick}>
         <span className={this.props.disc}></span>
       </td>
     );
