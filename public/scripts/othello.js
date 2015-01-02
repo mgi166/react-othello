@@ -59,6 +59,12 @@ var Board = React.createClass({
     console.log(this.state.player);
     console.log(this.enableToReverse(x, y));
     console.log([x, y]);
+
+    if (this.enableToReverse(y, x)) {
+      this.setState(
+        {board: this.doReverse(y, x)}
+      );
+    }
   },
   enableToReverse: function(x, y) {
     if ('black' === this.state.board[x][y] || 'white' === this.state.board[x][y]) {
@@ -99,6 +105,280 @@ var Board = React.createClass({
 
       return(false);
     }
+  },
+  doReverse: function(x, y) {
+    var newBoard = $.extend(true, [], this.state.board);
+    var player   = this.state.player;
+    var rival    = this.state.rival;
+
+    // if click then set disc
+    newBoard[x][y] = player;
+
+    // left line
+    var flipCells = [];
+    for (var i = 1; i < 8; i ++) {
+      try {
+        var ele = this.state.board[x - i][y];
+      } catch(e) {
+        var ele = undefined;
+      }
+
+      if (ele == null) {
+        break;
+      }
+
+      if ('empty' === ele) {
+        break;
+      }
+
+      if (ele === rival) {
+        flipCells.push([x - i, y]);
+      }
+
+      if (ele === player) {
+        if (flipCells.length) {
+          for (var j = 0; j < flipCells.length; j++) {
+            var _x = flipCells[j][0];
+            var _y = flipCells[j][1];
+            newBoard[_x][_y] = player;
+          }
+          break;
+        }
+      }
+    }
+
+    // upper left
+    var flipCells = [];
+    for (var i = 1; i < 8; i ++) {
+      try {
+        var ele = this.state.board[x - i][y - i];
+      } catch(e) {
+        var ele = undefined;
+      }
+
+      if (ele == null) {
+        break;
+      }
+
+      if ('empty' === ele) {
+        break;
+      }
+
+      if (ele === rival) {
+        flipCells.push([x - i, y - i]);
+      }
+
+      if (ele === player) {
+        if (flipCells.length) {
+          for (var j = 0; j < flipCells.length; j++) {
+            var _x = flipCells[j][0];
+            var _y = flipCells[j][1];
+            newBoard[_x][_y] = player;
+          };
+          break;
+        }
+      }
+    }
+
+    // upper
+    var flipCells = [];
+    for (var i = 1; i < 8; i ++) {
+      try {
+        var ele = this.state.board[x][y - i];
+      } catch(e) {
+        var ele = undefined;
+      }
+
+      if (ele == null) {
+        break;
+      }
+
+      if ('empty' === ele) {
+        break;
+      }
+
+      if (ele === rival) {
+        flipCells.push([x, y - i]);
+      }
+
+      if (ele === player) {
+        if (flipCells.length) {
+          for (var j = 0; j < flipCells.length; j++) {
+            var _x = flipCells[j][0];
+            var _y = flipCells[j][1];
+            newBoard[_x][_y] = player;
+          };
+          break;
+        }
+      }
+    }
+
+    // upper right
+    var flipCells = [];
+    for (var i = 1; i < 8; i ++) {
+      try {
+        var ele = this.state.board[x + i][y - i];
+      } catch(e) {
+        var ele = undefined;
+      }
+
+      if (ele == null) {
+        break;
+      }
+
+      if ('empty' === ele) {
+        break;
+      }
+
+      if (ele === rival) {
+        flipCells.push([x + i, y - i]);
+      }
+
+      if (ele === player) {
+        if (flipCells.length) {
+          for (var j = 0; j < flipCells.length; j++) {
+            var _x = flipCells[j][0];
+            var _y = flipCells[j][1];
+            newBoard[_x][_y] = player;
+          };
+          break;
+        }
+      }
+    }
+
+    // right
+    var flipCells = [];
+    for (var i = 1; i < 8; i ++) {
+      try {
+        var ele = this.state.board[x + i][y];
+      } catch(e) {
+        var ele = undefined;
+      }
+
+      if (ele == null) {
+        break;
+      }
+
+      if ('empty' === ele) {
+        break;
+      }
+
+      if (ele === rival) {
+        flipCells.push([x + i, y]);
+      }
+
+      if (ele === player) {
+        if (flipCells.length) {
+          for (var j = 0; j < flipCells.length; j++) {
+            var _x = flipCells[j][0];
+            var _y = flipCells[j][1];
+            newBoard[_x][_y] = player;
+          };
+          break;
+        }
+      }
+    }
+
+    // lower right
+    var flipCells = [];
+    for (var i = 1; i < 8; i ++) {
+      try {
+        var ele = this.state.board[x + i][y + i];
+      } catch(e) {
+        var ele = undefined;
+      }
+
+      if (ele == null) {
+        break;
+      }
+
+      if ('empty' === ele) {
+        break;
+      }
+
+      if (ele === rival) {
+        flipCells.push([x + i, y + i]);
+      }
+
+      if (ele === player) {
+        if (flipCells.length) {
+          for (var j = 0; j < flipCells.length; j++) {
+            var _x = flipCells[j][0];
+            var _y = flipCells[j][1];
+            newBoard[_x][_y] = player;
+          };
+          break;
+        }
+      }
+    }
+
+    // lower
+    var flipCells = [];
+    for (var i = 1; i < 8; i ++) {
+      try {
+        var ele = this.state.board[x][y + i];
+      } catch(e) {
+        var ele = undefined;
+      }
+
+      if (ele == null) {
+        break;
+      }
+
+      if ('empty' === ele) {
+        break;
+      }
+
+      if (ele === rival) {
+        flipCells.push([x, y + i]);
+      }
+
+      if (ele === player) {
+        if (flipCells.length) {
+          for (var j = 0; j < flipCells.length; j++) {
+            var _x = flipCells[j][0];
+            var _y = flipCells[j][1];
+            newBoard[_x][_y] = player;
+          };
+          break;
+        }
+      }
+    }
+
+    // lowerleft
+    var flipCells = [];
+    for (var i = 1; i < 8; i ++) {
+      try {
+        var ele = this.state.board[x - i][y + i];
+      } catch(e) {
+        var ele = undefined;
+      }
+
+      if (ele == null) {
+        break;
+      }
+
+      if ('empty' === ele) {
+        break;
+      }
+
+      if (ele === rival) {
+        flipCells.push([x - i, y + i]);
+      }
+
+      if (ele === player) {
+        if (flipCells.length) {
+          for (var j = 0; j < flipCells.length; j++) {
+            var _x = flipCells[j][0];
+            var _y = flipCells[j][1];
+            newBoard[_x][_y] = player;
+          };
+          break;
+        }
+      }
+    }
+
+    return(newBoard);
   },
   lines: function(x, y) {
     return (
