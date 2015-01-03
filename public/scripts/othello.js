@@ -531,18 +531,101 @@ var Board = React.createClass({
     return(line);
   },
   aroundTheCell: function(x, y) {
-    return (
-      [
-        this.state.board[x - 1][y],
-        this.state.board[x - 1][y - 1],
-        this.state.board[x - 1][y + 1],
-        this.state.board[x + 1][y],
-        this.state.board[x + 1][y - 1],
-        this.state.board[x + 1][y + 1],
-        this.state.board[x][y - 1],
-        this.state.board[x][y + 1],
-      ]
-    );
+    if (0 === x && 0 === y) {
+      // top left corner
+      return (
+        [
+          this.state.board[x][y + 1],
+          this.state.board[x + 1][y],
+          this.state.board[x + 1][y + 1]
+        ]
+      );
+    } else if (0 === x && 7 === y) {
+      // bottom left corner
+      return (
+        [
+          this.state.board[x + 1][y],
+          this.state.board[x + 1][y - 1],
+          this.state.board[x][y - 1],
+        ]
+      );
+    } else if (7 === x && 0 === y) {
+      // top right corner
+      return (
+        [
+          this.state.board[x - 1][y],
+          this.state.board[x - 1][y + 1],
+          this.state.board[x][y + 1],
+        ]
+      );
+    } else if (7 === x && 7 === y) {
+      // bottom right corner
+      return (
+        [
+          this.state.board[x - 1][y],
+          this.state.board[x - 1][y - 1],
+          this.state.board[x][y - 1],
+        ]
+      );
+    } else if (0 === x) {
+      // leftmost line
+      return (
+        [
+          this.state.board[x + 1][y],
+          this.state.board[x + 1][y - 1],
+          this.state.board[x + 1][y + 1],
+          this.state.board[x][y - 1],
+          this.state.board[x][y + 1],
+        ]
+      );
+    } else if (7 === x) {
+      // rightmost line
+      return (
+        [
+          this.state.board[x - 1][y],
+          this.state.board[x - 1][y - 1],
+          this.state.board[x - 1][y + 1],
+          this.state.board[x][y - 1],
+          this.state.board[x][y + 1],
+        ]
+      );
+    } else if (0 === y) {
+      // top line
+      return (
+        [
+          this.state.board[x - 1][y],
+          this.state.board[x - 1][y + 1],
+          this.state.board[x + 1][y],
+          this.state.board[x + 1][y + 1],
+          this.state.board[x][y + 1],
+        ]
+      );
+    } else if (7 === y) {
+      // bottom line
+      return (
+        [
+          this.state.board[x - 1][y],
+          this.state.board[x - 1][y - 1],
+          this.state.board[x + 1][y],
+          this.state.board[x + 1][y - 1],
+          this.state.board[x][y - 1],
+        ]
+      );
+    } else {
+      // other else cells
+      return (
+        [
+          this.state.board[x - 1][y],
+          this.state.board[x - 1][y - 1],
+          this.state.board[x - 1][y + 1],
+          this.state.board[x + 1][y],
+          this.state.board[x + 1][y - 1],
+          this.state.board[x + 1][y + 1],
+          this.state.board[x][y - 1],
+          this.state.board[x][y + 1],
+        ]
+      );
+    }
   },
   start: function() {
     this.setPlayer();
