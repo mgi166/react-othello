@@ -19,7 +19,7 @@ var Board = React.createClass({
         board:   board,
         player:  'black',
         rival:   'white',
-        history: []
+        history: [board]
       }
     );
   },
@@ -80,6 +80,13 @@ var Board = React.createClass({
 
       return(false);
     }
+  },
+  goBack: function() {
+    var previousBoard = this.state.history.pop();
+
+    this.setState(
+      { board: previousBoard }
+    );
   },
   doReverse: function(x, y) {
     var newBoard = $.extend(true, [], this.state.board);
@@ -618,6 +625,7 @@ var Board = React.createClass({
   },
   render: function() {
     var reverse = this.reverse;
+    var goBack = this.goBack;
     var board  = this.state.board.map(function(row, y) {
       var rows = row.map(function(disc, x) {
         return(<Cell disc={disc} x={x} y={y} reverse={reverse}/>);
@@ -626,7 +634,12 @@ var Board = React.createClass({
       return(<tr>{rows}</tr>);
     });
 
-    return (<table>{board}</table>);
+    return (
+      <div>
+        <table>{board}</table>
+        <Back id="back" goBack={goBack} />
+      </div>
+    );
   }
 });
 
@@ -651,6 +664,7 @@ var Cell = React.createClass({
 
 var Back = React.createClass({
   onClick: function() {
+    this.props.goBack();
   },
   render: function() {
     return (
