@@ -639,6 +639,16 @@ var Cell = React.createClass({
   }
 });
 
+var Back = React.createClass({
+  onClick: function() {
+  },
+  render: function() {
+    return (
+      <button id="back" onClick={this.onClick}>back</button>
+    );
+  }
+});
+
 var Next = React.createClass({
   onClick: function() {
   },
