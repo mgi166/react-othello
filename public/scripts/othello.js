@@ -14,7 +14,14 @@ var Board = React.createClass({
     board[3][4] = 'black';
     board[4][3] = 'black';
 
-    return({board: board, player: 'black', rival: 'white'});
+    return(
+      {
+        board:   board,
+        player:  'black',
+        rival:   'white',
+        history: []
+      }
+    );
   },
   enableToSet: function(nowPlayer) {
     return(true);
@@ -26,6 +33,9 @@ var Board = React.createClass({
     console.log([x, y]);
 
     if (this.enableToReverse(y, x)) {
+      var newBoard = this.doReverse(y, x);
+      this.state.history.push(newBoard);
+
       this.setState(
         {board: this.doReverse(y, x)}
       );
