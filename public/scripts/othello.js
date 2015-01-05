@@ -19,7 +19,8 @@ var Board = React.createClass({
         board:   board,
         player:  'black',
         rival:   'white',
-        history: [board]
+        history: [],
+        initialBoard: board
       }
     );
   },
@@ -82,11 +83,17 @@ var Board = React.createClass({
     }
   },
   goBack: function() {
-    var previousBoard = this.state.history.pop();
+    var Board = this.state.history.pop();
 
-    this.setState(
-      { board: previousBoard }
-    );
+    if (Board == null) {
+      this.setState(
+        { board: this.state.initialBoard }
+      );
+    } else {
+      this.setState(
+        { board: this.state.history.pop() }
+      );
+    }
   },
   doReverse: function(x, y) {
     var newBoard = $.extend(true, [], this.state.board);
