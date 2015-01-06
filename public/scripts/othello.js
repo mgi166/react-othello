@@ -30,10 +30,10 @@ var Board = React.createClass({
   reverse: function(x, y) {
     this.start();
     console.log(this.state.player);
-    console.log(this.enableToReverse(x, y));
+    console.log(this.isReversive(x, y));
     console.log([x, y]);
 
-    if (this.enableToReverse(y, x)) {
+    if (this.isReversive(y, x)) {
       var newBoard = this.doReverse(y, x);
       this.state.history.push(newBoard);
 
@@ -42,7 +42,7 @@ var Board = React.createClass({
       );
     }
   },
-  enableToReverse: function(x, y) {
+  isReversive: function(x, y) {
     if ('black' === this.state.board[x][y] || 'white' === this.state.board[x][y]) {
       return(false);
     } else {
