@@ -43,44 +43,42 @@ var Board = React.createClass({
     }
   },
   isReversive: function(x, y) {
-    if ('black' === this.state.board[x][y] || 'white' === this.state.board[x][y]) {
-      return(false);
-    } else {
-      var player = this.state.player;
-      var rival  = this.state.rival;
-      var lines  = this.lines(x, y);
+    var player = this.state.player;
+    var rival  = this.state.rival;
+    var board  = this.state.board;
 
-      for (var i = 0; i < lines.length; i++) {
-        var line = this.lines(x, y)[i];
+    for (var dx = -1; dx <= 1; dx++) {
+      for (var dy = -1; dy <= 1; dy++) {
+        if (0 === dx && 0 === dy) {
+          continue;
+        }
 
-        for (var j = 0; j < line.length; j++) {
-          var ele  = line[j];
-          var prev = line[j - 1];
+        var _x = x + dx;
+        var _y = y + dy;
+        var isReversive = false;
 
-          // there is a possibility that can reverse
-          if (ele === rival) {
-            continue;
-          }
+        if (board[_x] == null || board[_x][_y] == null || board[_x][_y] === 'empty') {
+          continue;
+        }
 
-          // empty line can not be reverse
-          if ('empty' === ele) {
-            break;
-          }
-
-          if (ele === player) {
-            if (prev === rival) {
+        while (board[_x] != null && board[_x][_y] != null && board[_x][_y] !== 'empty') {
+          if (board[_x][_y] === rival) {
+            isReversive = true;
+          } else if (board[_x][_y] === player) {
+            if (isReversive) {
               return(true);
             } else {
-              // it is not possible to reverse own disc
               break;
             }
           }
 
+          _x = _x + dx;
+          _y = _y + dy;
         }
       }
-
-      return(false);
     }
+
+    return(false);
   },
   goBack: function() {
     var Board = this.state.history.pop();
