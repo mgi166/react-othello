@@ -680,16 +680,6 @@ var Back = React.createClass({
   }
 });
 
-var Next = React.createClass({
-  onClick: function() {
-  },
-  render: function() {
-    return (
-      <button id="next" onClick={this.onClick}>next</button>
-    );
-  }
-});
-
 React.render(
   <Board />,
   document.getElementById('board')
