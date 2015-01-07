@@ -400,6 +400,23 @@ var Board = React.createClass({
       // TODO
     }
   },
+  turnChange: function() {
+    if ('black' === this.state.player) {
+      this.setState(
+        {
+          player: 'white',
+          rival:  'black'
+        }
+      );
+    } else {
+      this.setState(
+        {
+          player: 'black',
+          rival:  'white'
+        }
+      );
+    }
+  },
   render: function() {
     var reverse = this.reverse;
     var goBack = this.goBack;
