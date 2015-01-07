@@ -101,266 +101,38 @@ var Board = React.createClass({
     // if click then set disc
     newBoard[x][y] = player;
 
-    // left line
-    var flipCells = [];
-    for (var i = 1; i < 8; i ++) {
-      try {
-        var ele = this.state.board[x - i][y];
-      } catch(e) {
-        var ele = undefined;
-      }
+    for (var dx = -1; dx <= 1; dx++) {
+      for (var dy = -1; dy <= 1; dy++) {
+        if (0 === dx && 0 === dy) {
+          continue;
+        }
 
-      if (ele == null) {
-        break;
-      }
+        var _x = x + dx;
+        var _y = y + dy;
+        var rivalCells = [];
 
-      if ('empty' === ele) {
-        break;
-      }
+        if (newBoard[_x] == null || newBoard[_x][_y] == null || newBoard[_x][_y] === 'empty') {
+          continue;
+        }
 
-      if (ele === rival) {
-        flipCells.push([x - i, y]);
-      }
-
-      if (ele === player) {
-        if (flipCells.length) {
-          for (var j = 0; j < flipCells.length; j++) {
-            var _x = flipCells[j][0];
-            var _y = flipCells[j][1];
-            newBoard[_x][_y] = player;
+        while (newBoard[_x] != null && newBoard[_x][_y] != null && newBoard[_x][_y] !== 'empty') {
+          if (newBoard[_x][_y] === rival) {
+            rivalCells.push([_x, _y]);
+          } else if (newBoard[_x][_y] === player) {
+            if (rivalCells.length === 0) {
+              break;
+            } else {
+              for (var i = 0; i < rivalCells.length; i ++) {
+                var __x = rivalCells[i][0];
+                var __y = rivalCells[i][1];
+                newBoard[__x][__y] = player;
+              }
+              break;
+            }
           }
-          break;
-        }
-      }
-    }
 
-    // upper left
-    var flipCells = [];
-    for (var i = 1; i < 8; i ++) {
-      try {
-        var ele = this.state.board[x - i][y - i];
-      } catch(e) {
-        var ele = undefined;
-      }
-
-      if (ele == null) {
-        break;
-      }
-
-      if ('empty' === ele) {
-        break;
-      }
-
-      if (ele === rival) {
-        flipCells.push([x - i, y - i]);
-      }
-
-      if (ele === player) {
-        if (flipCells.length) {
-          for (var j = 0; j < flipCells.length; j++) {
-            var _x = flipCells[j][0];
-            var _y = flipCells[j][1];
-            newBoard[_x][_y] = player;
-          };
-          break;
-        }
-      }
-    }
-
-    // upper
-    var flipCells = [];
-    for (var i = 1; i < 8; i ++) {
-      try {
-        var ele = this.state.board[x][y - i];
-      } catch(e) {
-        var ele = undefined;
-      }
-
-      if (ele == null) {
-        break;
-      }
-
-      if ('empty' === ele) {
-        break;
-      }
-
-      if (ele === rival) {
-        flipCells.push([x, y - i]);
-      }
-
-      if (ele === player) {
-        if (flipCells.length) {
-          for (var j = 0; j < flipCells.length; j++) {
-            var _x = flipCells[j][0];
-            var _y = flipCells[j][1];
-            newBoard[_x][_y] = player;
-          };
-          break;
-        }
-      }
-    }
-
-    // upper right
-    var flipCells = [];
-    for (var i = 1; i < 8; i ++) {
-      try {
-        var ele = this.state.board[x + i][y - i];
-      } catch(e) {
-        var ele = undefined;
-      }
-
-      if (ele == null) {
-        break;
-      }
-
-      if ('empty' === ele) {
-        break;
-      }
-
-      if (ele === rival) {
-        flipCells.push([x + i, y - i]);
-      }
-
-      if (ele === player) {
-        if (flipCells.length) {
-          for (var j = 0; j < flipCells.length; j++) {
-            var _x = flipCells[j][0];
-            var _y = flipCells[j][1];
-            newBoard[_x][_y] = player;
-          };
-          break;
-        }
-      }
-    }
-
-    // right
-    var flipCells = [];
-    for (var i = 1; i < 8; i ++) {
-      try {
-        var ele = this.state.board[x + i][y];
-      } catch(e) {
-        var ele = undefined;
-      }
-
-      if (ele == null) {
-        break;
-      }
-
-      if ('empty' === ele) {
-        break;
-      }
-
-      if (ele === rival) {
-        flipCells.push([x + i, y]);
-      }
-
-      if (ele === player) {
-        if (flipCells.length) {
-          for (var j = 0; j < flipCells.length; j++) {
-            var _x = flipCells[j][0];
-            var _y = flipCells[j][1];
-            newBoard[_x][_y] = player;
-          };
-          break;
-        }
-      }
-    }
-
-    // lower right
-    var flipCells = [];
-    for (var i = 1; i < 8; i ++) {
-      try {
-        var ele = this.state.board[x + i][y + i];
-      } catch(e) {
-        var ele = undefined;
-      }
-
-      if (ele == null) {
-        break;
-      }
-
-      if ('empty' === ele) {
-        break;
-      }
-
-      if (ele === rival) {
-        flipCells.push([x + i, y + i]);
-      }
-
-      if (ele === player) {
-        if (flipCells.length) {
-          for (var j = 0; j < flipCells.length; j++) {
-            var _x = flipCells[j][0];
-            var _y = flipCells[j][1];
-            newBoard[_x][_y] = player;
-          };
-          break;
-        }
-      }
-    }
-
-    // lower
-    var flipCells = [];
-    for (var i = 1; i < 8; i ++) {
-      try {
-        var ele = this.state.board[x][y + i];
-      } catch(e) {
-        var ele = undefined;
-      }
-
-      if (ele == null) {
-        break;
-      }
-
-      if ('empty' === ele) {
-        break;
-      }
-
-      if (ele === rival) {
-        flipCells.push([x, y + i]);
-      }
-
-      if (ele === player) {
-        if (flipCells.length) {
-          for (var j = 0; j < flipCells.length; j++) {
-            var _x = flipCells[j][0];
-            var _y = flipCells[j][1];
-            newBoard[_x][_y] = player;
-          };
-          break;
-        }
-      }
-    }
-
-    // lowerleft
-    var flipCells = [];
-    for (var i = 1; i < 8; i ++) {
-      try {
-        var ele = this.state.board[x - i][y + i];
-      } catch(e) {
-        var ele = undefined;
-      }
-
-      if (ele == null) {
-        break;
-      }
-
-      if ('empty' === ele) {
-        break;
-      }
-
-      if (ele === rival) {
-        flipCells.push([x - i, y + i]);
-      }
-
-      if (ele === player) {
-        if (flipCells.length) {
-          for (var j = 0; j < flipCells.length; j++) {
-            var _x = flipCells[j][0];
-            var _y = flipCells[j][1];
-            newBoard[_x][_y] = player;
-          };
-          break;
+          _x = _x + dx;
+          _y = _y + dy;
         }
       }
     }
