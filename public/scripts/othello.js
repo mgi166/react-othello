@@ -83,6 +83,8 @@ var Board = React.createClass({
   goBack: function() {
     var Board = this.state.history.pop();
 
+    this.turnChange();
+
     if (Board == null) {
       this.setState(
         { board: this.state.initialBoard }
@@ -391,11 +393,7 @@ var Board = React.createClass({
   },
   setPlayer: function() {
     if (this.enableToSet(this.state.player)) {
-      if ('black' === this.state.player) {
-        this.setState({player: 'white', rival:  'black'});
-      } else {
-        this.setState({player: 'black', rival:  'white'});
-      }
+      this.turnChange();
     } else {
       // TODO
     }
