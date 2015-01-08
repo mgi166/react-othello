@@ -81,17 +81,18 @@ var Board = React.createClass({
     return(false);
   },
   goBack: function() {
-    var Board = this.state.history.pop();
+    this.state.history.pop();
+    var length = this.state.history.length;
 
     this.turnChange();
 
-    if (Board == null) {
+    if (Board == null || length === 0) {
       this.setState(
         { board: this.state.initialBoard }
       );
     } else {
       this.setState(
-        { board: this.state.history.pop() }
+        { board: this.state.history[length - 1] }
       );
     }
   },
