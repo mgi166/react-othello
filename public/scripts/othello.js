@@ -24,7 +24,7 @@ var Board = React.createClass({
       }
     );
   },
-  enableToSet: function(nowPlayer) {
+  enableToSet: function() {
     return(true);
   },
   reverse: function(x, y) {
@@ -146,7 +146,7 @@ var Board = React.createClass({
     this.setPlayer();
   },
   setPlayer: function() {
-    if (this.enableToSet(this.state.player)) {
+    if (this.enableToSet) {
       this.turnChange();
     } else {
       // TODO
