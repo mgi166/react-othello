@@ -47,6 +47,10 @@ var Board = React.createClass({
     var rival  = this.state.rival;
     var board  = this.state.board;
 
+    if (board[x][y] === player || board[x][y] === rival) {
+      return(false);
+    }
+
     for (var dx = -1; dx <= 1; dx++) {
       for (var dy = -1; dy <= 1; dy++) {
         if (0 === dx && 0 === dy) {
