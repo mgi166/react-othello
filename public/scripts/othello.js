@@ -25,7 +25,17 @@ var Board = React.createClass({
     );
   },
   enableToSet: function() {
-    return(true);
+    var board = this.state.board;
+
+    for(var i = 0; i < 8; i++) {
+      for(var j = 0; j < 8; j++) {
+        if (this.isAttackable(i, j)) {
+          return(true);
+        }
+      }
+    }
+
+    return(false);
   },
   reverse: function(x, y) {
     this.start();
