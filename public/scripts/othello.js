@@ -84,6 +84,48 @@ var Board = React.createClass({
 
     return(false);
   },
+  isAttackable: function(x, y) {
+    var player = this.state.player;
+    var rival  = this.state.rival;
+    var board  = this.state.board;
+
+    if (board[x][y] === player || board[x][y] === rival) {
+      return(false);
+    }
+
+    for (var dx = -1; dx <= 1; dx++) {
+      for (var dy = -1; dy <= 1; dy++) {
+        if (0 === dx && 0 === dy) {
+          continue;
+        }
+
+        var _x = x + dx;
+        var _y = y + dy;
+        var isReversive = false;
+
+        if (board[_x] == null || board[_x][_y] == null) {
+          continue;
+        }
+
+        while (board[_x] != null && board[_x][_y] != null && board[_x][_y] !== 'empty') {
+          if (board[_x][_y] === player) {
+            isReversive = true;
+          } else if (board[_x][_y] === rival) {
+            if (isReversive) {
+              return(true);
+            } else {
+              break;
+            }
+          }
+
+          _x = _x + dx;
+          _y = _y + dy;
+        }
+      }
+    }
+
+    return(false);
+  },
   goBack: function() {
     this.state.history.pop();
     var length = this.state.history.length;
