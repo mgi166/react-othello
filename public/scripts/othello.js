@@ -118,9 +118,9 @@ var Board = React.createClass({
         }
 
         while (board[_x] != null && board[_x][_y] != null && board[_x][_y] !== 'empty') {
-          if (board[_x][_y] === player) {
+          if (board[_x][_y] === rival) {
             isReversive = true;
-          } else if (board[_x][_y] === rival) {
+          } else if (board[_x][_y] === player) {
             if (isReversive) {
               return(true);
             } else {
@@ -202,7 +202,7 @@ var Board = React.createClass({
     this.setPlayer();
   },
   setPlayer: function() {
-    if (this.enableToSet) {
+    if (this.enableToSet()) {
       this.turnChange();
     } else {
       // TODO
