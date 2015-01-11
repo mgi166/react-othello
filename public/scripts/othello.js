@@ -275,6 +275,16 @@ var Back = React.createClass({
   }
 });
 
+var GameBoard = React.createClass({
+  render: function() {
+    return (
+      <div>
+        <Board />
+      </div>
+    );
+  }
+});
+
 React.render(
   <Board />,
   document.getElementById('game-board')
