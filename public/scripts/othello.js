@@ -276,6 +276,14 @@ var Back = React.createClass({
 });
 
 var GameBoard = React.createClass({
+  getInitialState: function() {
+    return (
+      {
+        player: 'black',
+        rival:  'white'
+      }
+    );
+  },
   render: function() {
     return (
       <div>
@@ -286,6 +294,6 @@ var GameBoard = React.createClass({
 });
 
 React.render(
-  <Board />,
+  <GameBoard />,
   document.getElementById('game-board')
 );
