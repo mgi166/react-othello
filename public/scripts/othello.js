@@ -238,7 +238,7 @@ var Board = React.createClass({
 
     return (
       <div>
-        <table>{board}</table>
+        <table id="board">{board}</table>
         <Back id="back" goBack={goBack} />
       </div>
     );
@@ -277,5 +277,5 @@ var Back = React.createClass({
 
 React.render(
   <Board />,
-  document.getElementById('board')
+  document.getElementById('game-board')
 );
