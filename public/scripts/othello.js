@@ -143,7 +143,7 @@ var Board = React.createClass({
     this.state.history.pop();
     var length = this.state.history.length;
 
-    this.props.turnChange();
+    this.props.turnChange(); // TODO: if pass, not turnChange
 
     if (Board == null || length === 0) {
       this.setState(
