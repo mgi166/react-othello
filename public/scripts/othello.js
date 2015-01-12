@@ -50,7 +50,11 @@ var Board = React.createClass({
       );
     }
 
-    this.props.turnChange();
+    if (this.enableToSet()) {
+      this.props.turnChange();
+    } else {
+      // TODO
+    }
   },
   isReversive: function(x, y) {
     var player = this.props.player;
@@ -97,7 +101,7 @@ var Board = React.createClass({
   isAttackable: function(x, y) {
     var player = this.props.player;
     var rival  = this.props.rival;
-    var board  = this.state.board;
+    var board  = this.state.history[this.state.history.length - 1];
 
     if (board[x][y] === player || board[x][y] === rival) {
       return(false);
