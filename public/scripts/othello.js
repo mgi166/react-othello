@@ -45,7 +45,7 @@ var Board = React.createClass({
       this.state.history.push(newBoard);
 
       this.setState(
-        {board: this.doReverse(y, x)}
+        { board: newBoard }
       );
     }
 
