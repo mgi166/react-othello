@@ -17,8 +17,6 @@ var Board = React.createClass({
     return(
       {
         board:   board,
-        player:  'black',
-        rival:   'white',
         history: [],
         initialBoard: board
       }
@@ -39,7 +37,7 @@ var Board = React.createClass({
   },
   reverse: function(x, y) {
     this.start();
-    console.log(this.state.player);
+    console.log(this.props.player);
     console.log(this.isReversive(x, y));
     console.log([x, y]);
 
@@ -53,8 +51,8 @@ var Board = React.createClass({
     }
   },
   isReversive: function(x, y) {
-    var player = this.state.player;
-    var rival  = this.state.rival;
+    var player = this.props.player;
+    var rival  = this.props.rival;
     var board  = this.state.board;
 
     if (board[x][y] === player || board[x][y] === rival) {
@@ -95,8 +93,8 @@ var Board = React.createClass({
     return(false);
   },
   isAttackable: function(x, y) {
-    var player = this.state.player;
-    var rival  = this.state.rival;
+    var player = this.props.player;
+    var rival  = this.props.rival;
     var board  = this.state.board;
 
     if (board[x][y] === player || board[x][y] === rival) {
@@ -140,7 +138,7 @@ var Board = React.createClass({
     this.state.history.pop();
     var length = this.state.history.length;
 
-    this.turnChange();
+    this.props.turnChange();
 
     if (Board == null || length === 0) {
       this.setState(
@@ -154,8 +152,8 @@ var Board = React.createClass({
   },
   doReverse: function(x, y) {
     var newBoard = $.extend(true, [], this.state.board);
-    var player   = this.state.player;
-    var rival    = this.state.rival;
+    var player   = this.props.player;
+    var rival    = this.props.rival;
 
     // if click then set disc
     newBoard[x][y] = player;
@@ -203,26 +201,9 @@ var Board = React.createClass({
   },
   setPlayer: function() {
     if (this.enableToSet()) {
-      this.turnChange();
+      this.props.turnChange();
     } else {
       // TODO
-    }
-  },
-  turnChange: function() {
-    if ('black' === this.state.player) {
-      this.setState(
-        {
-          player: 'white',
-          rival:  'black'
-        }
-      );
-    } else {
-      this.setState(
-        {
-          player: 'black',
-          rival:  'white'
-        }
-      );
     }
   },
   render: function() {
@@ -284,10 +265,27 @@ var GameBoard = React.createClass({
       }
     );
   },
+  turnChange: function() {
+    if ('black' === this.state.player) {
+      this.setState(
+        {
+          player: 'white',
+          rival:  'black'
+        }
+      );
+    } else {
+      this.setState(
+        {
+          player: 'black',
+          rival:  'white'
+        }
+      );
+    }
+  },
   render: function() {
     return (
       <div>
-        <Board />
+        <Board turnChange={this.turnChange} player={this.state.player} rival={this.state.rival} />
       </div>
     );
   }
