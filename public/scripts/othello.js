@@ -22,12 +22,12 @@ var Board = React.createClass({
       }
     );
   },
-  enableToSet: function() {
+  isAttackableInNewBoard: function() {
     var board  = this.state.history[this.state.history.length - 1];
 
     for(var i = 0; i < 8; i++) {
       for(var j = 0; j < 8; j++) {
-        if (this.isAttackable(i, j)) {
+        if (this.isAttackableByRival(i, j)) {
           return(true);
         }
       }
@@ -49,7 +49,7 @@ var Board = React.createClass({
       );
     }
 
-    if (this.enableToSet()) {
+    if (this.isAttackableInNewBoard()) {
       this.props.turnChange();
     } else {
       // TODO
@@ -97,7 +97,7 @@ var Board = React.createClass({
 
     return(false);
   },
-  isAttackable: function(x, y) {
+  isAttackableByRival: function(x, y) {
     var player = this.props.player;
     var rival  = this.props.rival;
     var board  = this.state.history[this.state.history.length - 1];
