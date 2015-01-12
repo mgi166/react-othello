@@ -206,6 +206,7 @@ var Board = React.createClass({
 
       return(<tr>{rows}</tr>);
     });
+    console.log("in board render");
 
     return (
       <div>
@@ -273,6 +274,7 @@ var GameBoard = React.createClass({
     }
   },
   render: function() {
+    console.log("in game-board render");
     return (
       <div>
         <Board turnChange={this.turnChange} player={this.state.player} rival={this.state.rival} />
