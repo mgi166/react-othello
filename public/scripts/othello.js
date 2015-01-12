@@ -36,7 +36,7 @@ var Board = React.createClass({
     return(false);
   },
   reverse: function(x, y) {
-    this.start();
+    this.props.turnChange();
     console.log(this.props.player);
     console.log(this.isReversive(x, y));
     console.log([x, y]);
@@ -195,16 +195,6 @@ var Board = React.createClass({
     }
 
     return(newBoard);
-  },
-  start: function() {
-    this.setPlayer();
-  },
-  setPlayer: function() {
-    if (this.enableToSet()) {
-      this.props.turnChange();
-    } else {
-      // TODO
-    }
   },
   render: function() {
     var reverse = this.reverse;
