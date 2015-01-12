@@ -23,7 +23,7 @@ var Board = React.createClass({
     );
   },
   enableToSet: function() {
-    var board = this.state.board;
+    var board  = this.state.history[this.state.history.length - 1];
 
     for(var i = 0; i < 8; i++) {
       for(var j = 0; j < 8; j++) {
@@ -36,7 +36,6 @@ var Board = React.createClass({
     return(false);
   },
   reverse: function(x, y) {
-    this.props.turnChange();
     console.log(this.props.player);
     console.log(this.isReversive(x, y));
     console.log([x, y]);
@@ -122,9 +121,9 @@ var Board = React.createClass({
         }
 
         while (board[_x] != null && board[_x][_y] != null && board[_x][_y] !== 'empty') {
-          if (board[_x][_y] === rival) {
+          if (board[_x][_y] === player) {
             isReversive = true;
-          } else if (board[_x][_y] === player) {
+          } else if (board[_x][_y] === rival) {
             if (isReversive) {
               return(true);
             } else {
