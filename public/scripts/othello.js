@@ -49,6 +49,8 @@ var Board = React.createClass({
         {board: this.doReverse(y, x)}
       );
     }
+
+    this.props.turnChange();
   },
   isReversive: function(x, y) {
     var player = this.props.player;
