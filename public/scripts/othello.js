@@ -312,6 +312,7 @@ var GameBoard = React.createClass({
     }
   },
   summarize: function(result) {
+    console.log(result);
   },
   render: function() {
     console.log("in game-board render");
