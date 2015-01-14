@@ -201,6 +201,35 @@ var Board = React.createClass({
 
     return(newBoard);
   },
+  resultOfNewBoard: function() {
+    var result = {};
+    var board  = this.state.history[this.state.history.length - 1];
+    var w_cnt  = 0;
+    var b_cnt  = 0;
+    var e_cnt  = 0;
+
+    for(var i = 0; i < 8; i++) {
+      for(var j = 0; j < 8; j++) {
+        if (board[i][j] === 'white') {
+          w_cnt++;
+        }
+
+        if (board[i][j] === 'black') {
+          b_cnt++;
+        }
+
+        if (board[i][j] === 'empty') {
+          e_cnt++;
+        }
+      }
+    }
+
+    result['black'] = b_cnt;
+    result['white'] = w_cnt;
+    result['empty'] = e_cnt;
+
+    return(result);
+  },
   render: function() {
     var reverse = this.reverse;
     var goBack = this.goBack;
