@@ -49,11 +49,15 @@ var Board = React.createClass({
       );
     }
 
+    var result = this.resultOfNewBoard();
+
     if (this.isAttackableInNewBoard()) {
       this.props.turnChange();
     } else {
-      // TODO
+      result['passed'] = true;
     }
+
+    this.props.summarize(result);
   },
   isReversive: function(x, y) {
     var player = this.props.player;
@@ -307,11 +311,13 @@ var GameBoard = React.createClass({
       );
     }
   },
+  summarize: function(result) {
+  },
   render: function() {
     console.log("in game-board render");
     return (
       <div>
-        <Board turnChange={this.turnChange} player={this.state.player} rival={this.state.rival} />
+        <Board turnChange={this.turnChange} summarize={this.summarize} player={this.state.player} rival={this.state.rival} />
       </div>
     );
   }
