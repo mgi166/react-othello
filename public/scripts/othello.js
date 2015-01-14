@@ -312,7 +312,19 @@ var GameBoard = React.createClass({
     }
   },
   summarize: function(result) {
-    console.log(result);
+    if (result['empty'] === 0) {
+      // finish game
+    }
+
+    if (result['passed'] && this.state.passed) {
+      // finish game
+    }
+
+    if (result['passed']) {
+      this.setState(
+        { passed: true }
+      );
+    }
   },
   render: function() {
     console.log("in game-board render");
