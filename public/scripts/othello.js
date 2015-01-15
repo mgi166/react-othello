@@ -262,8 +262,19 @@ var Board = React.createClass({
     var b_cnt  = 0;
     var e_cnt  = 0;
 
+    result['attackableByRival']  = false;
+    result['attackableByPlayer'] = false;
+
     for(var i = 0; i < 8; i++) {
       for(var j = 0; j < 8; j++) {
+        if (this.isAttackableByRival(i, j)) {
+          result['attackableByRival'] = true;
+        }
+
+        if (this.isAttackableByPlayer(i, j)) {
+          result['attackableByPlayer'] = true;
+        }
+
         if (board[i][j] === 'white') {
           w_cnt++;
         }
