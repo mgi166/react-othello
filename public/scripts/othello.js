@@ -24,16 +24,24 @@ var Board = React.createClass({
   },
   isAttackableInNewBoard: function() {
     var board  = this.state.history[this.state.history.length - 1];
+    var result = {};
+
+    result['byRival']  = false;
+    result['byPlayer'] = false;
 
     for(var i = 0; i < 8; i++) {
       for(var j = 0; j < 8; j++) {
         if (this.isAttackableByRival(i, j)) {
-          return(true);
+          result['byRival'] = true;
+        }
+
+        if (this.isAttackableByPlayer(i, j)) {
+          result['byPlayer'] = true;
         }
       }
     }
 
-    return(false);
+    return(result);
   },
   reverse: function(x, y) {
     console.log(this.props.player);
