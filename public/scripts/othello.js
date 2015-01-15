@@ -258,10 +258,10 @@ var Board = React.createClass({
   resultOfNewBoard: function() {
     var result = {};
     var board  = this.state.history[this.state.history.length - 1];
-    var w_cnt  = 0;
-    var b_cnt  = 0;
-    var e_cnt  = 0;
 
+    result['blank_cnt'] = 0;
+    result['white_cnt'] = 0;
+    result['empty_cnt'] = 0;
     result['attackableByRival']  = false;
     result['attackableByPlayer'] = false;
 
@@ -276,22 +276,18 @@ var Board = React.createClass({
         }
 
         if (board[i][j] === 'white') {
-          w_cnt++;
+          result['white_cnt']++;
         }
 
         if (board[i][j] === 'black') {
-          b_cnt++;
+          result['blank_cnt']++;
         }
 
         if (board[i][j] === 'empty') {
-          e_cnt++;
+          result['empty_cnt']++;
         }
       }
     }
-
-    result['black'] = b_cnt;
-    result['white'] = w_cnt;
-    result['empty'] = e_cnt;
 
     return(result);
   },
