@@ -59,7 +59,7 @@ var Board = React.createClass({
 
     var result = this.resultOfNewBoard();
 
-    if (this.isAttackableInNewBoard()) {
+    if (result['attackableByRival']) {
       this.props.turnChange();
     } else {
       result['passed'] = true;
