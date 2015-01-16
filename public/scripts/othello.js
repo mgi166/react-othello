@@ -356,6 +356,10 @@ var GameBoard = React.createClass({
       // finish game
     }
 
+    if (!result['attackableByRival'] && !result['attackableByPlayer']) {
+      // finish game
+    }
+
     if (result['passed']) {
       this.setState(
         { passed: true }
