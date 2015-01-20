@@ -282,6 +282,7 @@ var Board = React.createClass({
   render: function() {
     var reverse = this.reverse;
     var goBack = this.goBack;
+    var reset  = this.reset;
     var board  = this.state.board.map(function(row, y) {
       var rows = row.map(function(disc, x) {
         return(<Cell disc={disc} x={x} y={y} reverse={reverse}/>);
@@ -295,6 +296,7 @@ var Board = React.createClass({
       <div>
         <table id="board">{board}</table>
         <Back id="back" goBack={goBack} />
+        <Reset id="reset" reset={reset} />
       </div>
     );
   }
@@ -332,6 +334,7 @@ var Back = React.createClass({
 
 var Reset = React.createClass({
   onClick: function() {
+    this.props.reset();
   },
   render: function() {
     return (
