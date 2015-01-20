@@ -321,6 +321,16 @@ var Back = React.createClass({
   }
 });
 
+var Reset = React.createClass({
+  onClick: function() {
+  },
+  render: function() {
+    return (
+      <button id="reset" onClick={this.onClick}>reset</button>
+    );
+  }
+});
+
 var GameBoard = React.createClass({
   getInitialState: function() {
     return (
