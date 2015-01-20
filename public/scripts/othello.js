@@ -234,6 +234,15 @@ var Board = React.createClass({
 
     return(newBoard);
   },
+  reset: function() {
+    this.setState(
+      { board: this.state.initialBoard }
+    );
+
+    if (this.props.player == 'white') {
+      this.props.turnChange();
+    }
+  },
   resultOfNewBoard: function() {
     var result = {};
     var board  = this.state.history[this.state.history.length - 1];
