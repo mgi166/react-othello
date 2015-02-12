@@ -398,6 +398,21 @@ var GameBoard = React.createClass({
   }
 });
 
+var TransitionGroup = React.addons.TransitionGroup;
+
+var AnimationComponent = React.createClass({
+  componentWillEnter: function() {
+  },
+  componentDidEnter: function() {
+  },
+  componentWillLeave: function() {
+  },
+  componentDidLeave: function() {
+  },
+  render: function() {
+  }
+});
+
 React.render(
   <GameBoard />,
   document.getElementById('game-board')
